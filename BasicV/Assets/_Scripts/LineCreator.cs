@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class LineCreator : MonoBehaviour {
 
-	// Use this for initialization
+    public GameObject go;
+    
+    // Use this for initialization
 	void Start () {
 		
 	}
