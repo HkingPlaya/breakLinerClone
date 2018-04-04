@@ -13,6 +13,6 @@ public class Rocket : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        transform.Rotate(Vector3.forward * speed * Time.deltaTime);
+      //  transform.Rotate(Vector3.forward * speed * Time.deltaTime);
 	}
 }
