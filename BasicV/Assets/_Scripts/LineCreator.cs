@@ -28,7 +28,7 @@ public class LineCreator : MonoBehaviour {
     IEnumerator LineGen()
     {
         yield return new WaitForSeconds(.5f);
-        int color = ReturnANumber(0, 4);
+        int color = ReturnANumber(0, 3);
         int length = ReturnANumber(3, 15);
         for (int i=0;i<=length;i++)
         {
