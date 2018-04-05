@@ -51,12 +51,14 @@ public class Rocket : MonoBehaviour {
 
             if (dir == 0)
             {
-                SetBlendedEulerAngles(new Vector3(0, 60, 0));
+                //  SetBlendedEulerAngles(new Vector3(0, 60, 0));
+                rb.AddForce(Vector3.right * force);
                 dir = 1;
             }
             else if (dir == 1)
             {
-                SetBlendedEulerAngles(new Vector3(0, -60, 0));
+                //SetBlendedEulerAngles(new Vector3(0, -60, 0));
+                rb.AddForce(-Vector3.right * force);
                 dir = 0;
             }
             StartCoroutine(Pathcorrector());
@@ -64,7 +66,7 @@ public class Rocket : MonoBehaviour {
         }
         else
         {
-          //  transform.Translate(Vector3.forward * speed * Time.deltaTime);
+          transform.Translate(Vector3.forward * speed * Time.deltaTime);
             
         }
     }
@@ -72,13 +74,21 @@ public class Rocket : MonoBehaviour {
     IEnumerator Pathcorrector()
     {
 
-        rb.AddForce(Vector3.forward * force);
+        
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(.2f);
 
         
-        SetBlendedEulerAngles(new Vector3(0, 0, 0));
-        rb.AddForce(-Vector3.forward * force);
+      //  SetBlendedEulerAngles(new Vector3(0, 0, 0));
+        if(dir==1)
+        {
+            rb.AddForce(-Vector3.right * force);
+        }
+        else if (dir == 0)
+        {
+            rb.AddForce(Vector3.right * force);
+        }
+
     }
 }
 
