@@ -22,13 +22,14 @@ public class Rocket : MonoBehaviour {
     // Use this for initialization
     void Start () {
         rb = GetComponent<Rigidbody>();
-     //   rb.AddForce(transform.forward * force);
+        
+        //   rb.AddForce(transform.forward * force);
     }
 	
 	// Update is called once per frame
 	void Update () {
         Debug.Log("force" + force);
-        transform.Translate(transform.forward * speed * Time.deltaTime);
+        
         
         transform.Translate(Input.GetAxis("Horizontal"),0,0);
         /*  if(Input.GetKeyDown(KeyCode.Space))  Turns abruptly
@@ -63,22 +64,21 @@ public class Rocket : MonoBehaviour {
         }
         else
         {
-            // transform.Translate(Vector3.forward * speed * Time.deltaTime);
+          //  transform.Translate(Vector3.forward * speed * Time.deltaTime);
             
         }
     }
-    private void FixedUpdate()
-    {
-        
-    }
+    
     IEnumerator Pathcorrector()
     {
+
         rb.AddForce(Vector3.forward * force);
-     
+
         yield return new WaitForSeconds(1f);
 
-        rb.AddForce(-Vector3.forward * force);
+        
         SetBlendedEulerAngles(new Vector3(0, 0, 0));
+        rb.AddForce(-Vector3.forward * force);
     }
 }
 
